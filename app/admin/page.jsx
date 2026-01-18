@@ -7,6 +7,7 @@ const emptyForm = {
   url: "",
   seoTitle: "",
   seoDescription: "",
+  content: "",
 };
 
 export default function Admin() {
@@ -26,6 +27,8 @@ export default function Admin() {
   }, []);
 
   const submit = async () => {
+    e.preventDefault(); 
+
     const method = editId ? "PUT" : "POST";
 
     await fetch("/api/links", {
@@ -45,13 +48,14 @@ export default function Admin() {
       url: link.url,
       seoTitle: link.seoTitle,
       seoDescription: link.seoDescription,
+      content: link.content
     });
     setEditId(link._id);
+    console.log(link.content)
   };
 
   const deleteLink = async (id) => {
     if (!confirm("Delete this link?")) return;
-
     await fetch("/api/links", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -103,6 +107,14 @@ export default function Admin() {
               onChange={(e) => setForm({ ...form, seoDescription: e.target.value })
         }
             />
+            <textarea
+              className="px-4 py-2 border text-gray-600 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition md:col-span-2"
+              placeholder="Html Tailwindcss Content"
+              rows="2"
+              value={form.content}
+              onChange={(e) => setForm({ ...form, content: e.target.value })
+        }
+            />
             <button className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
               <Plus size={18} /> {editId ? "Update Link" : "Add Link"}
             </button>
@@ -140,7 +152,7 @@ export default function Admin() {
                         <Pencil size={18} />
                       </button>
                       <button 
-                        onClick={() => setLinks(links.filter(l => l.id !== link.id))}
+                        onClick={() => deleteLink(links.filter(l => l.id !== link._id))}
                         className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
                       >
                         <Trash2 size={18} />

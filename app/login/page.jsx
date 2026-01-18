@@ -1,34 +1,8 @@
-// "use client";
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
-
-// export default function Login() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const router = useRouter();
-
-//   const login = async () => {
-//     const res = await fetch("/api/auth/login", {
-//       method: "POST",
-//       body: JSON.stringify({ email, password }),
-//     });
-//     if (res.ok) router.push("/admin");
-//   };
-
-//   return (
-//     <div>
-//       <input placeholder="Email" onChange={e=>setEmail(e.target.value)} />
-//       <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)} />
-//       <button onClick={login}>Login</button>
-//     </div>
-//   );
-// }
-
 
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { LockKeyhole, Mail, Loader2 } from "lucide-react"; // Optional: lucide-react for icons
+import { LockKeyhole, Mail, Loader2 } from "lucide-react"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,7 +11,7 @@ export default function Login() {
   const router = useRouter();
 
   const login = async (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault(); 
     setIsLoading(true);
     
     try {

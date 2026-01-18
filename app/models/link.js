@@ -6,6 +6,11 @@ const LinkSchema = new mongoose.Schema(
     url: String,
     seoTitle: String,
     seoDescription: String,
+    content: {
+      type: String, 
+      default: "",
+    },
+
   },
   { timestamps: true }
 );
