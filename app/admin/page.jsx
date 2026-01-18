@@ -122,7 +122,7 @@ export default function Admin() {
         </div>
 
         {/* Links List Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-x-scroll">
           <table className="w-full text-left border-collapse">
             <thead className="bg-gray-50 border-bottom border-gray-200">
               <tr>
@@ -136,9 +136,8 @@ export default function Admin() {
                 <tr key={i} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="font-medium text-blue-600 flex items-center gap-1">
-                      <Globe size={14}/> /{link.slug}
+                      <Globe size={14}/> /{link.slug.substring(0,5)}
                     </div>
-                    <div className="text-xs text-gray-400 mt-1">{link.seoTitle}</div>
                   </td>
                   <td className="px-6 py-4">
                     <button onClick={() => redirect(link.url)} className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">
