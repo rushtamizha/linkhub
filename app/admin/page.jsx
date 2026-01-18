@@ -26,7 +26,7 @@ export default function Admin() {
     fetchLinks();
   }, []);
 
-  const submit = async () => {
+  const submit = async (e) => {
     e.preventDefault(); 
 
     const method = editId ? "PUT" : "POST";
