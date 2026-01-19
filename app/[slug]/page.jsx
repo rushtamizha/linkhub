@@ -25,7 +25,7 @@ const { slug } = await params;
   }
   return(
     <div className="p-2 bg-white min-h-screen" style={{ fontFamily: "var(--font-tamil)" }}>
-      {link.content&& <div dangerouslySetInnerHTML={{ __html: link.content }} />}
+      {link.content&& <iframe srcDoc={link.content} className="w-full min-h-[500px] rounded border" sandbox="allow-same-origin" />}
       <div className="fixed p-2 w-full bottom-0 left-1/2 -translate-x-1/2 bg-white">
         <div className="flex justify-center">
           <a className="bg-linear-to-b from-blue-500 to-blue-600 text  text-center p-3 w-full text-white  border-2 outline-1 outline-blue-100 border-blue-200 hover:outline-blue-100 hover:bg-linear-to-br hover:from-blue-600 hover:to-blue-700 hover:border-blue-200 transition-all ease-in-out duration-100" href={link.url} target="_blank" rel="noopener noreferrer">Open Link</a>
